@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="TabelaFipe.MainPage"
-             Title="Fipe API">
-
+             Title="Tabela Fipe">
     <StackLayout>
         <!-- Place new controls here -->
         <Label Text="Selecione a marca do veículo" 
@@ -17,7 +16,7 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{Binding fipe_name}" 
-                                   HorizontalOptions="Start" />
+                                   HorizontalOptions="Start" VerticalOptions="Center" Margin="10" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>

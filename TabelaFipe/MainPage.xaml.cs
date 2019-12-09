@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel;
+using TabelaFipe.ServicoFipe;
+using TabelaFipe.ServicoFipe.Model;
 using Xamarin.Forms;
 
 namespace TabelaFipe
@@ -16,6 +13,26 @@ namespace TabelaFipe
         public MainPage()
         {
             InitializeComponent();
+            buscarMarcas();
         }
+
+        private void buscarMarcas()
+        {
+            lstMarcas.ItemsSource = FipeAPI.buscarMarcas();
+        }
+
+        private void OnSelection(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e == null)
+            {
+                return;
+            }
+            FipeModel fm = e.SelectedItem as FipeModel;
+            var lista = FipeAPI.buscarModelos(fm.id);
+            var modelos = new Modelos();
+            modelos.BindingContext = lista;
+            Navigation.PushModalAsync(modelos);
+        }
+
     }
 }
