@@ -16,17 +16,30 @@ namespace TabelaFipe.ServicoFipe
         private static List<FipeModel> getFipeModelList(String url)
         {
             WebClient wc = new WebClient();
-            String json = wc.DownloadString(url);
-            List<FipeModel> fm = JsonConvert.DeserializeObject<List<FipeModel>>(json);
-            return fm;
+            try
+            {
+                String json = wc.DownloadString(url);
+                List<FipeModel> fm = JsonConvert.DeserializeObject<List<FipeModel>>(json);
+                return fm;
+            } catch (WebException)
+            {
+                return null;
+            }
         }
 
         private static FipeModel getFipeModel(String url)
         {
             WebClient wc = new WebClient();
-            String json = wc.DownloadString(url);
-            FipeModel fm = JsonConvert.DeserializeObject<FipeModel>(json);
-            return fm;
+            try
+            {
+                String json = wc.DownloadString(url);
+                FipeModel fm = JsonConvert.DeserializeObject<FipeModel>(json);
+                return fm;
+            }
+            catch (WebException)
+            {
+                return null;
+            }
         }
 
         public static List<FipeModel> buscarMarcas()

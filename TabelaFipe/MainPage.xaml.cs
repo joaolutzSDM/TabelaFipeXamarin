@@ -18,7 +18,11 @@ namespace TabelaFipe
 
         private void buscarMarcas()
         {
-            lstMarcas.ItemsSource = FipeAPI.buscarMarcas();
+            var lista = FipeAPI.buscarMarcas();
+            if (lista != null)
+                lstMarcas.ItemsSource = lista;
+            else            
+                lblMsg.Text = @"Serviço indisponível";
         }
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
@@ -27,10 +31,8 @@ namespace TabelaFipe
             {
                 return;
             }
-            FipeModel fm = e.SelectedItem as FipeModel;
-            var lista = FipeAPI.buscarModelos(fm.id);
             var modelos = new Modelos();
-            modelos.BindingContext = lista;
+            modelos.BindingContext = e.SelectedItem as FipeModel;
             Navigation.PushModalAsync(modelos);
         }
 

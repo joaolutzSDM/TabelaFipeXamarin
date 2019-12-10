@@ -13,10 +13,20 @@ namespace TabelaFipe
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Modelos : ContentPage
     {
-
         public Modelos()
         {
             InitializeComponent();
+            buscarModelos();
+        }
+
+        private void buscarModelos()
+        {
+            FipeModel fm = BindingContext as FipeModel;
+            var lista = FipeAPI.buscarModelos(fm.id);
+            if (lista != null)
+                lstModelos.ItemsSource = lista;
+            else
+                lblMsg.Text = @"Serviço indisponível";
         }
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
@@ -27,7 +37,6 @@ namespace TabelaFipe
             }
             var anoModelos = new AnosModelo();
             anoModelos.BindingContext = e.SelectedItem as FipeModel;
-            lstModelos.SelectedItem = null;
             Navigation.PushModalAsync(anoModelos);
         }
 

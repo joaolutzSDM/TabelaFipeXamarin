@@ -8,8 +8,8 @@
              Title="Tabela Fipe">
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Selecione a marca do veículo" 
-           HorizontalOptions="Center" />
+        <Label Text="Selecione a marca do veículo" x:Name="lblMsg"
+           HorizontalOptions="Center" Margin="10"/>
         <ListView x:Name="lstMarcas" ItemSelected="OnSelection">
             <ListView.ItemTemplate>
                 <DataTemplate>
