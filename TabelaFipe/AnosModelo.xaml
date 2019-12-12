@@ -7,9 +7,21 @@
              x:Class="TabelaFipe.AnosModelo">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <!-- Place new controls here -->
+            <Label Text="Selecione o Ano-Modelo do veículo" x:Name="lblMsg"
+           HorizontalOptions="Center" Margin="10"/>
+            <ListView x:Name="lstAnosModelo" ItemSelected="OnSelection">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding name}"
+                                   HorizontalOptions="Start" VerticalOptions="Center" Margin="10" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

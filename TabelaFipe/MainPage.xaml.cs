@@ -10,6 +10,8 @@ namespace TabelaFipe
     [DesignTimeVisible(false)]
     public partial class MainPage : ContentPage
     {
+        public static FipeModel selecao = new FipeModel();
+
         public MainPage()
         {
             InitializeComponent();
@@ -27,12 +29,12 @@ namespace TabelaFipe
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e == null)
+            if (e == null || e.SelectedItem == null)
             {
                 return;
             }
-            var modelos = new Modelos();
-            modelos.BindingContext = e.SelectedItem as FipeModel;
+            var modelos = new Modelos(e.SelectedItem as FipeModel);
+            lstMarcas.SelectedItem = null;
             Navigation.PushModalAsync(modelos);
         }
 

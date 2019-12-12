@@ -13,16 +13,16 @@ namespace TabelaFipe
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Modelos : ContentPage
     {
-        public Modelos()
+        public Modelos(FipeModel fipeModel)
         {
             InitializeComponent();
-            buscarModelos();
+            buscarModelos(fipeModel);
         }
 
-        private void buscarModelos()
+        private void buscarModelos(FipeModel fipeModel)
         {
-            FipeModel fm = BindingContext as FipeModel;
-            var lista = FipeAPI.buscarModelos(fm.id);
+            MainPage.selecao.marcaSelec = fipeModel.id;
+            var lista = FipeAPI.buscarModelos(fipeModel.id);
             if (lista != null)
                 lstModelos.ItemsSource = lista;
             else
@@ -31,12 +31,12 @@ namespace TabelaFipe
 
         private void OnSelection(object sender, SelectedItemChangedEventArgs e)
         {
-            if (e == null)
+            if (e == null || e.SelectedItem == null)
             {
                 return;
             }
-            var anoModelos = new AnosModelo();
-            anoModelos.BindingContext = e.SelectedItem as FipeModel;
+            var anoModelos = new AnosModelo(e.SelectedItem as FipeModel);
+            lstModelos.SelectedItem = null;
             Navigation.PushModalAsync(anoModelos);
         }
 

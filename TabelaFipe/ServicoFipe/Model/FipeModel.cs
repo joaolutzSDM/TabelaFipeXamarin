@@ -16,6 +16,9 @@
 		public string preco { get; set; }
 		public string referencia { get; set; }
 		public double time { get; set; }
+		public string marcaSelec { get; set; }
+		public string modeloSelec { get; set; }
+		public string anoModeloSelec { get; set; }
 
 		public string getAno_modelo()
 		{
