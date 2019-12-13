@@ -13,20 +13,9 @@ namespace TabelaFipe
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Veiculo : ContentPage
     {
-        public Veiculo(FipeModel fipeModel)
+        public Veiculo()
         {
             InitializeComponent();
-            buscarVeiculo(fipeModel);
-        }
-
-        private void buscarVeiculo(FipeModel fipeModel)
-        {
-            MainPage.selecao.anoModeloSelec = fipeModel.id;
-            var veiculo = FipeAPI.buscarVeiculo(MainPage.selecao.marcaSelec, MainPage.selecao.modeloSelec, fipeModel.id);
-            if (veiculo != null)
-                BindingContext = veiculo;
-            else
-                lblMsg.Text = @"Serviço indisponível";
         }
     }
 }

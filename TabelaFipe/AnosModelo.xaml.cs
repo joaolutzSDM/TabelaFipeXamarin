@@ -35,7 +35,16 @@ namespace TabelaFipe
             {
                 return;
             }
-            var veiculo = new Veiculo(e.SelectedItem as FipeModel);
+            
+            FipeModel fm = FipeAPI.buscarVeiculo(MainPage.selecao.marcaSelec, MainPage.selecao.modeloSelec, (e.SelectedItem as FipeModel).id);
+            if(fm == null)
+            {
+                lblMsg.Text = @"Serviço indisponível";
+                lstAnosModelo.ItemsSource = null;
+                return;
+            }
+            var veiculo = new Veiculo();
+            veiculo.BindingContext = fm;
             lstAnosModelo.SelectedItem = null;
             Navigation.PushModalAsync(veiculo);
         }

@@ -7,8 +7,24 @@
              x:Class="TabelaFipe.Veiculo">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Selecione a marca do veículo" x:Name="lblMsg"
-           HorizontalOptions="Center" Margin="10"/>
+            <Label Text="Informações do Veículo" x:Name="lblMsg"
+           HorizontalOptions="Center" Margin="40"/>
+            <Label Text="{Binding name}"
+                   VerticalOptions="Start"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="18" FontAttributes="Bold" />
+            <Label Text="{Binding marca}"
+                   VerticalOptions="Start"
+                   FontSize="18" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding ano_modelo}"
+                   VerticalOptions="Start"
+                   FontSize="18" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding combustivel}"
+                   VerticalOptions="Start"
+                   FontSize="18" HorizontalOptions="CenterAndExpand" />
+            <Label Text="{Binding preco}"
+                   VerticalOptions="Start"
+                   FontSize="18" HorizontalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
